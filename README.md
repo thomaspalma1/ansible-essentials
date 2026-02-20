@@ -7,12 +7,6 @@
 
 A detailed description will be developed in the future.
 
-> [!INFO]  
-> Please consider that this is a **study repository**. This means that **no formal GitFlow model** or **structured contribution workflow** will be used.  
-
-> Since the main purpose of the repository is **learning**, **remembering concepts**, and **experimentation**, the organization will follow a **simpler format**.  
-
-> In a **production environment** or in a more serious project where an actual product is being developed, it is **essential** to adopt a **well-defined workflow**, with **specific branches**, a **tagging system**, **version control**, **releases**, and other **best practices**.  
-
-> Furthermore, I can guarantee only two things: **detailed commit titles and descriptions**, so you can clearly see and understand what was done, as well as **small and consistent commits**.
+> [!NOTE]  
+> Please consider that this is a **study repository**. This means that **no formal GitFlow model** or **structured contribution workflow** will be used. Since the main purpose of the repository is **learning**, **remembering concepts**, and **experimentation**, the organization will follow a **simpler format**. In a **production environment** or in a more serious project where an actual product is being developed, it is **essential** to adopt a **well-defined workflow**, with **specific branches**, a **tagging system**, **version control**, **releases**, and other **best practices**. Furthermore, I can guarantee only two things: **detailed commit titles and descriptions**, so you can clearly see and understand what was done, as well as **small and consistent commits**.
 
