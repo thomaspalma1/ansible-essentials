@@ -4,15 +4,15 @@
   hosts: all
   tasks:
     - name: Install the package
-      package:
+      ansible.builtin.package:
         name: vsftpd
     - name: Run the service
-      service:
+      ansible.builtin.service:
         name: vsftpd
         state: started
         enabled: true
     - name: Open firewall
-      firewalld:
+      ansible.posix.firewalld:
         service: ftp
         state: enabled
         permanent: true

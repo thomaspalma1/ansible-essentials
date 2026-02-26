@@ -4,16 +4,16 @@
   hosts: all
   tasks:
     - name: Install package
-      package:
+      ansible.builtin.package:
         name: httpd
-        state: latest
+        state: present
     - name: Start and enable service
-      service:
+      ansible.builtin.service:
         name: httpd
         state: started
         enabled: true
     - name: Open port in firewall
-      firewalld:
+      ansible.posix.firewalld:
         service: http
         permanent: true
         state: enabled
@@ -24,5 +24,5 @@
   hosts: localhost
   tasks:
     - name: Test httpd access
-      uri:
+      ansible.builtin.uri:
         url: http://vm-alma
