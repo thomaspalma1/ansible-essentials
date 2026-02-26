@@ -1,28 +1,28 @@
 ---
-- name: install start and enable httpd
+- name: Install start and enable httpd
   gather_facts: false
   hosts: all
   tasks:
-    - name: install package
+    - name: Install package
       package:
         name: httpd
         state: latest
-    - name: start and enable service
+    - name: Start and enable service
       service:
         name: httpd
         state: started
         enabled: true
-    - name: open port in firewall
+    - name: Open port in firewall
       firewalld:
         service: http
         permanent: true
         state: enabled
         immediate: true
 
-- name: test httpd accessibility
+- name: Test httpd accessibility
   become: false
   hosts: localhost
   tasks:
-    - name: test httpd access
+    - name: Test httpd access
       uri:
         url: http://vm-alma

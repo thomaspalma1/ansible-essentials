@@ -1,17 +1,17 @@
 ---
-- name: install and run vsftpd
+- name: Install and run vsftpd
   gather_facts: false
   hosts: all
   tasks:
-    - name: install the package
+    - name: Install the package
       package:
         name: vsftpd
-    - name: run the service
+    - name: Run the service
       service:
         name: vsftpd
         state: started
         enabled: true
-    - name: open firewall
+    - name: Open firewall
       firewalld:
         service: ftp
         state: enabled
