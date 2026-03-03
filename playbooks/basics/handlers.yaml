@@ -1,0 +1,28 @@
+---
+- name: Set up web server
+  hosts: all
+  tasks:
+    - name: Install package
+      ansible.builtin.package:
+        name: httpd
+        state: present
+
+    - name: Copy index.html
+      ansible.builtin.copy:
+        src: /tmp/index.html
+        dest: /var/www/html/index.htmls
+        mode: "0644"
+      notify:
+        - restart_web
+
+    - name: Copy nothings - intended to fail
+      ansible.builtin.copy:
+        src: /tmp/nothing
+        dest: /var/www/html/index.htmls
+        mode: "0644"
+
+  handlers:
+    - name: restart_web
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
