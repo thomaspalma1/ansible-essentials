@@ -1,0 +1,19 @@
+---
+- name: Test register
+  hosts: all
+  vars_prompt:
+    - name: username
+      prompt: which user are you looking for
+      private: false
+  tasks:
+    - name: Read passwd file
+      ansible.builtin.command: cat /etc/passwd
+      register: passwd_contents
+      changed_when: false
+    - name: Display passwd contents
+      ansible.builtin.debug:
+        var: passwd_contents
+    - name: Display user search result
+      ansible.builtin.debug:
+        msg: echo "passwd content user {{ username }}"
+      when: passwd_contents.stdout.find(username) != -1
