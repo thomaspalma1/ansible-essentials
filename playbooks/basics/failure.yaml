@@ -1,0 +1,13 @@
+---
+- name: Demonstrating failed_when
+  hosts: all
+  tasks:
+    - name: Run a script
+      ansible.builtin.command: echo hello world
+      ignore_errors: true
+      register: command_result
+      failed_when: "'world' in command_result.stdout"
+      changed_when: false
+    - name: See if we get here
+      ansible.builtin.debug:
+        msg: hello
