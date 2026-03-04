@@ -1,0 +1,13 @@
+---
+- name: Start some services
+  hosts: all
+  vars:
+    my_services:
+      - crond
+      - sshd
+  tasks:
+    - name: Start some services
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+      loop: "{{ my_services }}"
