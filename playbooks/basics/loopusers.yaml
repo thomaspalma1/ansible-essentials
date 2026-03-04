@@ -1,0 +1,16 @@
+---
+- name: Create users using a loop
+  hosts: all
+  tasks:
+    - name: Create users
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        state: present
+        groups: "{{ item.groups }}"
+      loop:
+        - name: barbara
+          groups: wheel
+        - name: johann
+          groups: users
+        - name: chopin
+          groups: users
