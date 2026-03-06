@@ -1,0 +1,27 @@
+---
+- name: Find config
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Find ansible.cfg files
+      ansible.builtin.find:
+        path: /home/ansible/
+        patterns: 'ansible.cfg'
+        recurse: true
+      register: output
+
+    - name: Display found files
+      ansible.builtin.debug:
+        var: item.path
+      with_items: "{{ output.files }}"
+
+    - name: Update config files
+      ansible.builtin.blockinfile:
+        path: "{{ item.path }}"
+        insertafter: "defaults"
+        marker: "##<!-- {mark} ANSIBLE MANAGED BLOCK -->##"
+        block: |
+          fact_caching = redis
+          fact_caching_timeout = 3600
+          fact_caching_connection = localhost:6379:0
+      with_items: "{{ output.files }}"
